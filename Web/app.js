@@ -19,44 +19,40 @@ if ("serviceWorker" in navigator) {
 }
 
 const runeTable = [
-  { rune: "ᚠ", cyr: "Ф", lat: "F" },
-  { rune: "ᚢ", cyr: "У", lat: "U" },
-  { rune: "ᚦ", cyr: "Т / Д", lat: "TH / T" },
-  { rune: "ᚨ", cyr: "А", lat: "A" },
-  { rune: "ᚱ", cyr: "Р", lat: "R" },
-  { rune: "ᚲ", cyr: "К", lat: "K" },
+  { rune: "ᚪ", cyr: "А", lat: "A" },
+  { rune: "ᛒ", cyr: "Б", lat: "B" },
+  { rune: "ᚹ", cyr: "В", lat: "V" },
   { rune: "ᚷ", cyr: "Г", lat: "G" },
-  { rune: "ᚹ", cyr: "В", lat: "V / W" },
-  { rune: "ᚺ", cyr: "Х", lat: "H" },
-  { rune: "ᚾ", cyr: "Н", lat: "N" },
-  { rune: "ᛁ", cyr: "И", lat: "I" },
-  { rune: "ᛃ", cyr: "Й", lat: "J / Y" },
-  { rune: "ᛇ", cyr: "Э", lat: "E" },
-  { rune: "ᛈ", cyr: "П", lat: "P" },
+  { rune: "ᛞ", cyr: "Д", lat: "D" },
+  { rune: "ᛖ", cyr: "Е", lat: "E" },
+  { rune: "ᚫ", cyr: "Ё", lat: "" },
+  { rune: "ᛢ", cyr: "Ж", lat: "" },
   { rune: "ᛉ", cyr: "З", lat: "Z" },
+  { rune: "ᛁ", cyr: "И", lat: "I" },
+  { rune: "ᛃ", cyr: "Й", lat: "Y" },
+  { rune: "ᚲ", cyr: "К", lat: "K" },
+  { rune: "ᛚ", cyr: "Л", lat: "L" },
+  { rune: "ᛗ", cyr: "М", lat: "M" },
+  { rune: "ᚾ", cyr: "Н", lat: "N" },
+  { rune: "ᛟ", cyr: "О", lat: "O" },
+  { rune: "ᛈ", cyr: "П", lat: "P" },
+  { rune: "ᚱ", cyr: "Р", lat: "R" },
   { rune: "ᛋ", cyr: "С", lat: "S" },
   { rune: "ᛏ", cyr: "Т", lat: "T" },
-  { rune: "ᛒ", cyr: "Б", lat: "B" },
-  { rune: "ᛖ", cyr: "Е", lat: "E" },
-  { rune: "ᛗ", cyr: "М", lat: "M" },
-  { rune: "ᛚ", cyr: "Л", lat: "L" },
-  { rune: "ᛜ", cyr: "НГ", lat: "NG" },
-  { rune: "ᛞ", cyr: "Д", lat: "D" },
-  { rune: "ᛟ", cyr: "О", lat: "O" },
-  { rune: "ᚪ", cyr: "А", lat: "A" },
-  { rune: "ᚫ", cyr: "Я / Э", lat: "AE" },
-  { rune: "ᚩ", cyr: "О", lat: "O" },
-  { rune: "ᚣ", cyr: "Ю", lat: "Y" },
-  { rune: "ᛡ", cyr: "ЙО", lat: "IO" },
-  { rune: "ᚷᛋ", cyr: "ZH", lat: "Ж" },
-  { rune: "ᚲᛋ", cyr: "CH", lat: "Ч" },
-  { rune: "ᛋᛋ", cyr: "SH", lat: "Ш" },
-  { rune: "ᛏᛋ", cyr: "TS", lat: "Ц" },
-  { rune: "ᛋᛋᚲ", cyr: "SHCH", lat: "Щ" },
-  { rune: "ᛃᚨ", cyr: "YA", lat: "Я" },
-  { rune: "ᛃᚢ", cyr: "YU", lat: "Ю" },
-  { rune: "ᛃᛟ", cyr: "YO", lat: "Ё" },
-  { rune: "ᛁ", cyr: "'", lat: "Ь" },
+  { rune: "ᚢ", cyr: "У", lat: "U" },
+  { rune: "ᚠ", cyr: "Ф", lat: "F" },
+  { rune: "ᚺ", cyr: "Х", lat: "H" },
+  { rune: "ᛣ", cyr: "Ц", lat: "" },
+  { rune: "ᚻ", cyr: "Ч", lat: "" },
+  { rune: "ᛥ", cyr: "Ш", lat: "" },
+  { rune: "ᛦ", cyr: "Щ", lat: "" },
+  { rune: "ᛜ", cyr: "Ы", lat: "" },
+  { rune: "ᛜᛁ", cyr: "Ъ", lat: "" },
+  { rune: "Ь", cyr: "Ь", lat: "" },
+  { rune: "ᛇ", cyr: "Э", lat: "" },
+  { rune: "ᚣ", cyr: "Ю", lat: "" },
+  { rune: "Y", cyr: "Я", lat: "" },
+  { rune: "W", cyr: "", lat: "W" },
 ];
 
 const cyrToRune = new Map();
@@ -66,13 +62,17 @@ const runeToLat = new Map();
 
 for (const entry of runeTable) {
   const cyrVariants = entry.cyr
-      .split("/")
-      .map((value) => value.trim())
-      .filter(Boolean);
+    ? entry.cyr
+        .split("/")
+        .map((value) => value.trim())
+        .filter(Boolean)
+    : [];
   const latVariants = entry.lat
-      .split("/")
-      .map((value) => value.trim())
-      .filter(Boolean);
+    ? entry.lat
+        .split("/")
+        .map((value) => value.trim())
+        .filter(Boolean)
+    : [];
 
   const cyrOut = cyrVariants[0] ?? "";
   const latOut = latVariants[0] ?? "";
@@ -91,7 +91,15 @@ for (const entry of runeTable) {
 
 const cyrKeys = Array.from(cyrToRune.keys()).sort((a, b) => b.length - a.length);
 const latKeys = Array.from(latToRune.keys()).sort((a, b) => b.length - a.length);
-const runeKeys = Array.from(runeToCyr.keys()).sort((a, b) => b.length - a.length);
+const runeKeysCyr = Array.from(runeToCyr.keys()).sort((a, b) => b.length - a.length);
+const runeKeysLat = Array.from(runeToLat.keys()).sort((a, b) => b.length - a.length);
+
+// Future: add words here to prevent rune combinations from merging into a single letter.
+// Example (Latin): add "VU" to keep ᚹᚢ as VU instead of W within that word.
+const runeCombinationExceptions = {
+  latin: new Set(),
+  cyrillic: new Set(),
+};
 
 function mapByKeys(text, keys, map, caseInsensitive) {
   let out = "";
@@ -125,11 +133,11 @@ function toRunesFromLat(text) {
 }
 
 function fromRunesToCyr(text) {
-  return mapByKeys(text, runeKeys, runeToCyr, false);
+  return mapByKeys(text, runeKeysCyr, runeToCyr, false).toLowerCase();
 }
 
 function fromRunesToLat(text) {
-  return mapByKeys(text, runeKeys, runeToLat, false);
+  return mapByKeys(text, runeKeysLat, runeToLat, false).toLowerCase();
 }
 
 function detectSource(text) {
