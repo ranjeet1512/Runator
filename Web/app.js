@@ -10,6 +10,7 @@ const targetSelect = document.getElementById("targetSelect");
 const swapBtn = document.getElementById("swapBtn");
 
 let lastFileName = null;
+let lastFileTranslatedContent = null;
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -65,13 +66,13 @@ const runeToLat = new Map();
 
 for (const entry of runeTable) {
   const cyrVariants = entry.cyr
-    .split("/")
-    .map((value) => value.trim())
-    .filter(Boolean);
+      .split("/")
+      .map((value) => value.trim())
+      .filter(Boolean);
   const latVariants = entry.lat
-    .split("/")
-    .map((value) => value.trim())
-    .filter(Boolean);
+      .split("/")
+      .map((value) => value.trim())
+      .filter(Boolean);
 
   const cyrOut = cyrVariants[0] ?? "";
   const latOut = latVariants[0] ?? "";
@@ -131,6 +132,19 @@ function fromRunesToLat(text) {
   return mapByKeys(text, runeKeys, runeToLat, false);
 }
 
+function detectSource(text) {
+  const runeCount = (text.match(/[\u16A0-\u16FF]/g) || []).length;
+  const cyrCount = (text.match(/[А-Яа-яЁё]/g) || []).length;
+  const latCount = (text.match(/[A-Za-z]/g) || []).length;
+
+  if (runeCount === 0 && cyrCount === 0 && latCount === 0) {
+    return sourceSelect.value;
+  }
+  if (runeCount >= cyrCount && runeCount >= latCount) return "runes";
+  if (cyrCount >= latCount) return "cyrillic";
+  return "latin";
+}
+
 function translateText(text, source, target) {
   if (source === target) return text;
 
@@ -147,6 +161,12 @@ function translateText(text, source, target) {
   return text;
 }
 
+function translateFileContentToRunes(text) {
+  const detected = detectSource(text);
+  sourceSelect.value = detected;
+  return translateText(text, detected, "runes");
+}
+
 function runTranslate() {
   const input = inputText.value;
   if (!input) {
@@ -154,8 +174,10 @@ function runTranslate() {
     statusText.textContent = "Ready";
     return;
   }
-  const translated =
-    translateText(input, sourceSelect.value, targetSelect.value) + "";
+  lastFileTranslatedContent = null;
+  const detected = detectSource(input);
+  sourceSelect.value = detected;
+  const translated = translateText(input, detected, targetSelect.value) + "";
   outputText.value = translated;
   statusText.textContent = "Ready";
 }
@@ -183,27 +205,43 @@ swapBtn.addEventListener("click", () => {
   runTranslate();
 });
 
-fileInput.addEventListener("change", async (e) => {
+fileInput.addEventListener("change", (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
   lastFileName = file.name;
+  lastFileTranslatedContent = null;
   statusText.textContent = "Loading file...";
-  const text = await file.text();
-  inputText.value = text;
-  runTranslate();
+  downloadBtn.classList.remove("primary");
+  downloadBtn.classList.add("ghost");
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const text = typeof reader.result === "string" ? reader.result : "";
+    const translated = translateFileContentToRunes(text);
+    lastFileTranslatedContent = translated;
+    statusText.textContent = "File translated. Ready to download.";
+    downloadBtn.classList.remove("ghost");
+    downloadBtn.classList.add("primary");
+  };
+  reader.onerror = () => {
+    lastFileTranslatedContent = null;
+    statusText.textContent = "File read error.";
+    downloadBtn.classList.remove("primary");
+    downloadBtn.classList.add("ghost");
+  };
+  reader.readAsText(file);
 });
 
 downloadBtn.addEventListener("click", () => {
-  if (!outputText.value) return;
+  const fileContent = lastFileTranslatedContent ?? outputText.value;
+  if (!fileContent) return;
   const original = lastFileName || "translated.txt";
   const dot = original.lastIndexOf(".");
   const base = dot > 0 ? original.slice(0, dot) : original;
   const ext = dot > 0 ? original.slice(dot) : ".txt";
-  const target = targetSelect.value;
-  const suffix =
-    target === "runes" ? "runes" : target === "latin" ? "latin" : "cyrillic";
+  const suffix = lastFileTranslatedContent ? "runic" : targetSelect.value;
   const name = `${base}_${suffix}${ext}`;
-  const blob = new Blob([outputText.value], { type: "text/plain;charset=utf-8" });
+  const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = name;
@@ -211,4 +249,10 @@ downloadBtn.addEventListener("click", () => {
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(link.href);
+  if (lastFileTranslatedContent) {
+    lastFileTranslatedContent = null;
+    downloadBtn.classList.remove("primary");
+    downloadBtn.classList.add("ghost");
+    statusText.textContent = "Ready";
+  }
 });
