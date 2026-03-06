@@ -20,16 +20,16 @@ if ("serviceWorker" in navigator) {
 const runeTable = [
   { rune: "ᚠ", cyr: "Ф", lat: "F" },
   { rune: "ᚢ", cyr: "У", lat: "U" },
-  { rune: "ᚦ", cyr: "Т", lat: "T" },
+  { rune: "ᚦ", cyr: "Т / Д", lat: "TH / T" },
   { rune: "ᚨ", cyr: "А", lat: "A" },
   { rune: "ᚱ", cyr: "Р", lat: "R" },
   { rune: "ᚲ", cyr: "К", lat: "K" },
   { rune: "ᚷ", cyr: "Г", lat: "G" },
-  { rune: "ᚹ", cyr: "В", lat: "V" },
+  { rune: "ᚹ", cyr: "В", lat: "V / W" },
   { rune: "ᚺ", cyr: "Х", lat: "H" },
   { rune: "ᚾ", cyr: "Н", lat: "N" },
   { rune: "ᛁ", cyr: "И", lat: "I" },
-  { rune: "ᛃ", cyr: "Й", lat: "J" },
+  { rune: "ᛃ", cyr: "Й", lat: "J / Y" },
   { rune: "ᛇ", cyr: "Э", lat: "E" },
   { rune: "ᛈ", cyr: "П", lat: "P" },
   { rune: "ᛉ", cyr: "З", lat: "Z" },
@@ -42,15 +42,20 @@ const runeTable = [
   { rune: "ᛜ", cyr: "НГ", lat: "NG" },
   { rune: "ᛞ", cyr: "Д", lat: "D" },
   { rune: "ᛟ", cyr: "О", lat: "O" },
-  { rune: "ᛥ", cyr: "Ж", lat: "ZH" },
-  { rune: "ᛣ", cyr: "Ч", lat: "CH" },
-  { rune: "ᛯ", cyr: "Ш", lat: "SH" },
-  { rune: "ᛪ", cyr: "Ц", lat: "TS" },
-  { rune: "ᛮ", cyr: "Щ", lat: "SHCH" },
-  { rune: "ᛃᚨ", cyr: "Я", lat: "YA" },
-  { rune: "ᛃᚢ", cyr: "Ю", lat: "YU" },
-  { rune: "ᛃᛟ", cyr: "Ё", lat: "YO" },
-  { rune: "Ь", cyr: "Ь", lat: "'" },
+  { rune: "ᚪ", cyr: "А", lat: "A" },
+  { rune: "ᚫ", cyr: "Я / Э", lat: "AE" },
+  { rune: "ᚩ", cyr: "О", lat: "O" },
+  { rune: "ᚣ", cyr: "Ю", lat: "Y" },
+  { rune: "ᛡ", cyr: "ЙО", lat: "IO" },
+  { rune: "ᚷᛋ", cyr: "ZH", lat: "Ж" },
+  { rune: "ᚲᛋ", cyr: "CH", lat: "Ч" },
+  { rune: "ᛋᛋ", cyr: "SH", lat: "Ш" },
+  { rune: "ᛏᛋ", cyr: "TS", lat: "Ц" },
+  { rune: "ᛋᛋᚲ", cyr: "SHCH", lat: "Щ" },
+  { rune: "ᛃᚨ", cyr: "YA", lat: "Я" },
+  { rune: "ᛃᚢ", cyr: "YU", lat: "Ю" },
+  { rune: "ᛃᛟ", cyr: "YO", lat: "Ё" },
+  { rune: "ᛁ", cyr: "'", lat: "Ь" },
 ];
 
 const cyrToRune = new Map();
@@ -59,12 +64,28 @@ const runeToCyr = new Map();
 const runeToLat = new Map();
 
 for (const entry of runeTable) {
-  const cyrKey = entry.cyr.toUpperCase();
-  const latKey = entry.lat.toUpperCase();
-  if (!cyrToRune.has(cyrKey)) cyrToRune.set(cyrKey, entry.rune);
-  if (!latToRune.has(latKey)) latToRune.set(latKey, entry.rune);
-  runeToCyr.set(entry.rune, entry.cyr);
-  runeToLat.set(entry.rune, entry.lat);
+  const cyrVariants = entry.cyr
+    .split("/")
+    .map((value) => value.trim())
+    .filter(Boolean);
+  const latVariants = entry.lat
+    .split("/")
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  const cyrOut = cyrVariants[0] ?? "";
+  const latOut = latVariants[0] ?? "";
+  if (cyrOut) runeToCyr.set(entry.rune, cyrOut);
+  if (latOut) runeToLat.set(entry.rune, latOut);
+
+  for (const value of cyrVariants) {
+    const cyrKey = value.toUpperCase();
+    if (!cyrToRune.has(cyrKey)) cyrToRune.set(cyrKey, entry.rune);
+  }
+  for (const value of latVariants) {
+    const latKey = value.toUpperCase();
+    if (!latToRune.has(latKey)) latToRune.set(latKey, entry.rune);
+  }
 }
 
 const cyrKeys = Array.from(cyrToRune.keys()).sort((a, b) => b.length - a.length);
