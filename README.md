@@ -1,18 +1,19 @@
 ﻿# Jarorun Transliterator
 
-Jarorun Transliterator is a tool that converts text from standard alphabets (Latin or Cyrillic) into the **Jarorun rune alphabet**.
+## Live Demo
 
-The project is designed to make it easy to write, experiment, and create content using runic writing systems inspired by Scandinavian and Slavic traditions.
+You can try the transliterator here:  
+https://nightlum-studio.github.io/Runator/Web/index.html
 
 ## About Jarorun
 
 Jarorun is a custom runic alphabet and transliteration system designed for creative and fictional writing systems.
 
-The alphabet draws inspiration from **Scandinavian runes** while introducing additional characters adapted to represent **Slavic phonetics**.  
-This allows Jarorun to represent a wider set of sounds while preserving a runic visual style.
+The Jarorun alphabet is based on the Elder Futhark and Anglo-Saxon Futhorc runic systems.
+The combination of these two historical rune sets allows for representing a wider range of sounds, 
+including those found in Slavic languages, while preserving the distinctive runic visual style.
 
-The transliteration system supports both **Latin and Cyrillic input**, converting modern text into the Jarorun rune alphabet.
-
+The transliteration system supports both **Latin and Cyrillic input**, converting modern text into the Jarorun rune alphabet. 
 Jarorun is intended for creative use, including game development, worldbuilding, fictional languages, lore writing, and symbolic design.
 
 ## Features
