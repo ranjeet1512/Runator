@@ -14,45 +14,52 @@ let lastFileTranslatedContent = null;
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js");
+    navigator.serviceWorker.register("Web/sw.js");
   });
 }
 
 const runeTable = [
-  { rune: "ᚪ", cyr: "А", lat: "A" },
+  { rune: "ᚠ", cyr: "А", lat: "A" },
   { rune: "ᛒ", cyr: "Б", lat: "B" },
-  { rune: "ᚹ", cyr: "В", lat: "V" },
-  { rune: "ᚷ", cyr: "Г", lat: "G" },
+  { rune: "ᚳ", cyr: "С", lat: "C" },
   { rune: "ᛞ", cyr: "Д", lat: "D" },
-  { rune: "ᛖ", cyr: "Е", lat: "E" },
-  { rune: "ᚫ", cyr: "Ё", lat: "" },
-  { rune: "ᛢ", cyr: "Ж", lat: "" },
-  { rune: "ᛉ", cyr: "З", lat: "Z" },
-  { rune: "ᛁ", cyr: "И", lat: "I" },
-  { rune: "ᛃ", cyr: "Й", lat: "Y" },
+  { rune: "ᛇ", cyr: "Е", lat: "E" },
+  { rune: "ᚭ", cyr: "Ф", lat: "F" },
+  { rune: "ᚷ", cyr: "Г", lat: "G" },
+  { rune: "ᚻ", cyr: "Х", lat: "H" },
+  { rune: "ᛁ", cyr: "И/I", lat: "I" },
+  { rune: "ᚦ", cyr: "Ж", lat: "J" },
   { rune: "ᚲ", cyr: "К", lat: "K" },
   { rune: "ᛚ", cyr: "Л", lat: "L" },
   { rune: "ᛗ", cyr: "М", lat: "M" },
   { rune: "ᚾ", cyr: "Н", lat: "N" },
   { rune: "ᛟ", cyr: "О", lat: "O" },
   { rune: "ᛈ", cyr: "П", lat: "P" },
+  { rune: "ᛣ", cyr: "", lat: "Q" },
   { rune: "ᚱ", cyr: "Р", lat: "R" },
-  { rune: "ᛋ", cyr: "С", lat: "S" },
+  { rune: "ᛋ", cyr: "", lat: "S" },
   { rune: "ᛏ", cyr: "Т", lat: "T" },
   { rune: "ᚢ", cyr: "У", lat: "U" },
-  { rune: "ᚠ", cyr: "Ф", lat: "F" },
-  { rune: "ᚺ", cyr: "Х", lat: "H" },
-  { rune: "ᛣ", cyr: "Ц", lat: "C" },
-  { rune: "ᚻ", cyr: "Ч", lat: "" },
-  { rune: "ᛥ", cyr: "Ш", lat: "" },
-  { rune: "ᛦ", cyr: "Щ", lat: "" },
-  { rune: "ᛜ", cyr: "Ы", lat: "" },
-  { rune: "ᛜᛁ", cyr: "Ъ", lat: "" },
-  { rune: "Ь", cyr: "Ь", lat: "" },
-  { rune: "ᛇ", cyr: "Э", lat: "X" },
-  { rune: "ᚣ", cyr: "Ю", lat: "Q" },
-  { rune: "Y", cyr: "Я", lat: "J" },
-  { rune: "W", cyr: "", lat: "W" },
+  { rune: "ᛝ", cyr: "В", lat: "V" },
+  { rune: "ᚹ", cyr: "", lat: "W" },
+  { rune: "ᛡ", cyr: "", lat: "X" },
+  { rune: "ᚣ", cyr: "Я", lat: "Y" },
+  { rune: "ᛢ", cyr: "", lat: "Z" },
+  { rune: "ᛉ", cyr: "Ё/Є", lat: "" },
+  { rune: "ᛖ", cyr: "Ч", lat: "" },
+  { rune: "ᛄ", cyr: "Ш", lat: "" },
+  { rune: "ᚸ", cyr: "Щ", lat: "" },
+  { rune: "ᚩ", cyr: "Ь", lat: "" },
+  { rune: "ᛊ", cyr: "Ы", lat: "" },
+  { rune: "ᛠ", cyr: "Ї", lat: "" },
+  { rune: "ᛩ", cyr: "Ў", lat: "" },
+  { rune: "ᛯ", cyr: "Ъ", lat: "" },
+  { rune: "ᛪ", cyr: "Ґ", lat: "" },
+  { rune: "ᛋᛊ", cyr: "З", lat: "" },
+  { rune: "ᚹᛊ", cyr: "Ю", lat: "" },
+  { rune: "ᛢᚩ", cyr: "Ц", lat: "" },
+  { rune: "ᛣᛊ", cyr: "Й", lat: "" },
+  { rune: "ᛡᚩ", cyr: "Э", lat: "" },
 ];
 
 const cyrToRune = new Map();
@@ -142,7 +149,7 @@ function fromRunesToLat(text) {
 
 function detectSource(text) {
   const runeCount = (text.match(/[\u16A0-\u16FF]/g) || []).length;
-  const cyrCount = (text.match(/[А-Яа-яЁё]/g) || []).length;
+  const cyrCount = (text.match(/[А-Яа-яЁёЄєЇїЎўҐґ]/g) || []).length;
   const latCount = (text.match(/[A-Za-z]/g) || []).length;
 
   if (runeCount === 0 && cyrCount === 0 && latCount === 0) {

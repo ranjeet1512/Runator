@@ -3,13 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Runator</title>
-    <meta http-equiv="refresh" content="0; url=Web/index.html" />
-    <script>
-      window.location.replace("Web/index.html");
-    </script>
+    <meta name="theme-color" content="#18181b" />
+    <link rel="stylesheet" href="Web/assets/css/styles.css" />
+    <link rel="manifest" href="Web/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <p><a href="Web/index.html">Open Runator</a></p>
+    <div class="app">
+      <nav class="navbar">
+        <div class="nav-links">
+          <a class="nav-link active" href="index.html">Translator</a>
+          <a class="nav-link" href="Web/pages/alphabet.html">Alphabet</a>
+          <a class="nav-link" href="Web/pages/downloads.html">Downloads</a>
+        </div>
+      </nav>
+      <section class="toolbar">
+        <div class="file-actions">
+          <label class="upload-inline" for="fileInput">
+            <input
+              id="fileInput"
+              type="file"
+              accept=".txt,.md,.json,.xml,.csv,.yaml,.yml,.ini,.log,.html,.css,.js,.ts,.cs,text/*"
+            />
+            <span class="btn ghost">Upload</span>
+          </label>
+          <button id="downloadBtn" class="btn ghost" type="button">Download translated</button>
+        </div>
+        <div class="toolbar-divider" aria-hidden="true"></div>
+        <div class="translate-actions">
+          <div class="select-group compact">
+            <select id="sourceSelect">
+              <option value="cyrillic">Cyrillic</option>
+              <option value="latin">Latin</option>
+              <option value="runes">Runes</option>
+            </select>
+          </div>
+          <button id="swapBtn" class="btn swap" type="button" aria-label="Swap source and target">
+            <img src="Web/assets/icons/icon_autorenew.svg" alt="" />
+          </button>
+          <div class="select-group compact">
+            <select id="targetSelect">
+              <option value="runes">Runes</option>
+              <option value="cyrillic">Cyrillic</option>
+              <option value="latin">Latin</option>
+            </select>
+          </div>
+          <button id="translateBtn" class="btn primary">Translate</button>
+          <button id="copyBtn" class="btn ghost">Copy</button>
+        </div>
+      </section>
+
+      <section class="panes">
+        <div class="pane">
+          <div class="pane-title">Input text</div>
+          <textarea id="inputText" placeholder="Type or paste text here..."></textarea>
+        </div>
+        <div class="pane">
+          <div class="pane-title">Output</div>
+          <textarea id="outputText" readonly></textarea>
+        </div>
+      </section>
+
+      <footer class="status">
+        <span id="statusText">Ready</span>
+      </footer>
+    </div>
+
+    <script src="Web/assets/js/app.js"></script>
   </body>
 </html>
